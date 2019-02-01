@@ -37,7 +37,7 @@ class App extends Component {
     };
     const aaa = this.state.adverts.push(newAdvert);
     this.setState({adverts: aaa});
-    console.log('added', aaa);
+    console.log('added1', aaa);
 
 
     //console.log('AddedOBJ', advert);
