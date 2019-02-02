@@ -1,2 +1,10 @@
 export { default as AdvertsTable } from './AdvertsTable';
 export { default as AdvertForm } from './AdvertForm';
+export { default as Adverts } from './Adverts';
+export { default as Authors } from './Authors';
+export { default as Advert } from './Advert';
+export { default as Author } from './Author';
+export { default as AdvertAdd } from './AdvertAdd';
+export { default as AdvertEdit } from './AdvertEdit';
+export { default as AuthorAdd } from './AuthorAdd';
+export { default as AuthorEdit } from './AuthorEdit';
