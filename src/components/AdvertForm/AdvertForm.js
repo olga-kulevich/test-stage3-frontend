@@ -11,25 +11,26 @@ class AdvertForm extends PureComponent {
     }
 
     handleTitleChange(event) {
-        console.log(event.target.value);
         this.setState({title: event.target.value});
     }
 
     handleCategoryChange(event) {
-        console.log(event.target.value);
         this.setState({category: event.target.value});
     }
 
     handlePriceChange(event) {
-        console.log(event.target.value);
         this.setState({price: event.target.value});
+    }
+
+    handleSubmit(event) {
+        event.preventDefault();
     }
 
     render() {
         const { onAddAdvert } = this.props;
 
         return (
-            <form>
+            <form onSubmit={this.handleSubmit}>
                 <label>
                     Title
                     <input type="text" value={this.state.title} onChange={this.handleTitleChange}/>
@@ -45,12 +46,11 @@ class AdvertForm extends PureComponent {
                     <input type="number" value={this.state.price} onChange={this.handlePriceChange}/>
                 </label>
 
-                <button onClick={(event) => onAddAdvert(this.state)}>AddAdvert</button>
+                <button onClick={() => onAddAdvert(this.state)}>AddAdvert</button>
             </form>
         );
     }
 }
-
 
 AdvertForm.propTypes = {
     onAddAdvert: PropTypes.func.isRequired

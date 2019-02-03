@@ -6,6 +6,7 @@ export default class AuthorAdd extends PureComponent {
     return (
       <div>
         <h1>AuthorAdd</h1>
+        <button onClick={() => this.props.history.push("/authors")}>Add</button>
       </div>
     )
   }

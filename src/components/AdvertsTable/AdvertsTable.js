@@ -1,22 +1,26 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import {Link, withRouter} from 'react-router-dom'
 
 class AdvertsTable extends PureComponent {
     renderRows(adverts) {
         const { onDeleteClick } = this.props;
+
         return adverts.map(advert => (
             <tr key={advert.id}>
-                <td>{advert.title}</td>
+                <td>
+                  <Link to={`/adverts/${advert.id}`}>{advert.title}</Link>
+                </td>
                 <td>{advert.category}</td>
                 <td>{advert.price}</td>
-                <td><button onClick={(event) => onDeleteClick(advert.id)}>Delete</button></td>
+                <td><button onClick={() => onDeleteClick(advert.id)}>Delete</button></td>
+                <td><button onClick={() => this.props.history.push(`/adverts/${advert.id}/edit`)}>Edit</button></td>
             </tr>
         ));
     }
 
     render() {
         const { adverts } = this.props;
-        console.log(3, adverts);
         return (
             <table>
                 <thead>
@@ -25,6 +29,7 @@ class AdvertsTable extends PureComponent {
                     <th>Category</th>
                     <th>Price</th>
                     <th>Delete</th>
+                    <th>Edit</th>
                 </tr>
                 </thead>
                 <tbody>{this.renderRows(adverts)}</tbody>
@@ -34,8 +39,9 @@ class AdvertsTable extends PureComponent {
 }
 
 AdvertsTable.propTypes = {
-    adverts: PropTypes.array,
-    onDeleteClick: PropTypes.func.isRequired
+    adverts: PropTypes.array.isRequired,
+    onDeleteClick: PropTypes.func.isRequired,
+    history: PropTypes.object.isRequired
 };
 
-export default AdvertsTable;
+export default withRouter(AdvertsTable);
