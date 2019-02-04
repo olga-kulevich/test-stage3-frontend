@@ -58,7 +58,7 @@ class Root extends Component {
             <Route exact path={PATHS.main.path} component={Main}/>
             <Route exact path={PATHS.adverts.path} render={(props) => (
               <Adverts {...props} adverts={this.state.adverts.map(advert => {return {...advert}})}
-                       delete={this.deleteAdvert}
+                       onDeleteAdvert={this.deleteAdvert}
               />
             )}/>
             <Route exact path={PATHS.authors.path} component={Authors}/>
@@ -67,7 +67,7 @@ class Root extends Component {
             <Route exact path={PATHS.advertEdit.path} component={AdvertEdit}/>
             <Route exact path={PATHS.authorEdit.path} component={AuthorEdit}/>
             <Route exact path="/adverts/new" render={(props) => (
-              <AdvertAdd {...props} add={this.addAdvert}/>
+              <AdvertAdd {...props} onAddAdvert={this.addAdvert}/>
             )}
             />
             <Route exact path="" render={(props) => (
