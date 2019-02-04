@@ -1,3 +1,4 @@
+export { default as Main } from './Main';
 export { default as AdvertsTable } from './AdvertsTable';
 export { default as AdvertForm } from './AdvertForm';
 export { default as Adverts } from './Adverts';

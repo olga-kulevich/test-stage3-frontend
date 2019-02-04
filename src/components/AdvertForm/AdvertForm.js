@@ -1,13 +1,14 @@
-import React, { PureComponent } from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
 class AdvertForm extends PureComponent {
     constructor(props) {
         super(props);
-        this.state = { title: '', category: '', price: ''};
+        this.state = {title: '', category: '', price: ''};
         this.handleTitleChange = this.handleTitleChange.bind(this);
         this.handleCategoryChange = this.handleCategoryChange.bind(this);
         this.handlePriceChange = this.handlePriceChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleTitleChange(event) {
@@ -27,7 +28,7 @@ class AdvertForm extends PureComponent {
     }
 
     render() {
-        const { onAddAdvert } = this.props;
+        const {onAddAdvert} = this.props;
 
         return (
             <form onSubmit={this.handleSubmit}>

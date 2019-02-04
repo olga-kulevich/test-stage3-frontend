@@ -1,17 +1,10 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import {Route, BrowserRouter as Router, Switch, Link} from 'react-router-dom';
+import { Route, BrowserRouter as Router, Switch, Link } from 'react-router-dom';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
-import Adverts from './components/Adverts';
-import Authors from './components/Authors';
-import Advert from './components/Advert';
-import Author from './components/Author';
-import AuthorAdd from './components/AuthorAdd';
-import AuthorEdit from './components/AuthorEdit';
-import AdvertAdd from './components/AdvertAdd';
-import AdvertEdit from './components/AdvertEdit';
+import { Main, Adverts, Authors, Advert, Author, AuthorAdd, AuthorEdit, AdvertAdd, AdvertEdit } from './components';
+import { PATHS } from './constants';
 
 const ADVERTS = [
   {id: 1, category: 'Sporting Goods', price: '$49.99', title: 'Football'},
@@ -54,29 +47,29 @@ class Root extends Component {
         <div>
           <ul>
             <li>
-              <Link to="/adverts">Adverts</Link>
+              <Link to={PATHS.adverts.path}>Adverts</Link>
             </li>
             <li>
-              <Link to="/authors">Authors</Link>
+              <Link to={PATHS.authors.path}>Authors</Link>
             </li>
           </ul>
           <Switch>
-            <Route exact path="/" component={App}/>
-            <Route exact path="/adverts" render={(props) => (
+            <Route exact path={PATHS.main.path} component={Main}/>
+            <Route exact path={PATHS.adverts.path} render={(props) => (
               <Adverts {...props} adverts={this.state.adverts.map(advert => {return {...advert}})}
                        delete={this.deleteAdvert}
               />
             )}/>
-            <Route exact path="/authors" component={Authors}/>
-            <Route exact path="/adverts/:id(\d+)" component={Advert}/>
-            <Route exact path="/authors/:id(\d+)" component={Author}/>
-            <Route exact path="/adverts/:id/edit" component={AdvertEdit}/>
-            <Route exact path="/authors/:id/edit" component={AuthorEdit}/>
+            <Route exact path={PATHS.authors.path} component={Authors}/>
+            <Route exact path={PATHS.advert.path} component={Advert}/>
+            <Route exact path={PATHS.author.path} component={Author}/>
+            <Route exact path={PATHS.advertEdit.path} component={AdvertEdit}/>
+            <Route exact path={PATHS.authorEdit.path} component={AuthorEdit}/>
             <Route exact path="/adverts/new" render={(props) => (
               <AdvertAdd {...props} add={this.addAdvert}/>
             )}
             />
-            <Route exact path="/authors/new" render={(props) => (
+            <Route exact path="" render={(props) => (
               <AuthorAdd {...props} />
             )}
             />
