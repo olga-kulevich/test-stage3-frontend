@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Route, BrowserRouter as Router, Switch, Link } from 'react-router-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-import { Main, Adverts, Authors, Advert, Author, AuthorAdd, AuthorEdit, AdvertAdd, AdvertEdit } from './components';
+import { Main, Adverts, Authors, Advert, Author, AuthorAdd, AuthorEdit, AdvertAdd, AdvertEdit } from './containers';
 import { PATHS } from './constants';
 
 const ADVERTS = [

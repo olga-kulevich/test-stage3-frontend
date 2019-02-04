@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import './Adverts.css';
-import {AdvertsTable} from "../index";
+import {AdvertsTable} from "../../components";
 
 export default class Adverts extends PureComponent {
   render() {

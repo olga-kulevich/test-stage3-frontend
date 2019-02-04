@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import './AdvertAdd.css';
-import { AdvertForm } from "../index";
+import { AdvertForm } from "../../components";
 import PropTypes from "prop-types";
 
 export default class AdvertAdd extends PureComponent {
