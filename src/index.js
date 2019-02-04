@@ -5,6 +5,7 @@ import './index.css';
 import * as serviceWorker from './serviceWorker';
 import { Main, Adverts, Authors, Advert, Author, AuthorAdd, AuthorEdit, AdvertAdd, AdvertEdit } from './containers';
 import { PATHS } from './constants';
+import PropTypes from "prop-types";
 
 const ADVERTS = [
   {id: 1, category: 'Sporting Goods', price: '$49.99', title: 'Football'},
@@ -79,6 +80,10 @@ class Root extends Component {
     </div>
   }
 }
+
+Root.propTypes = {
+  adverts: PropTypes.array.isRequired
+};
 
 ReactDOM.render(<Root adverts={ADVERTS} />, document.getElementById('root'));
 

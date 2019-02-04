@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './Main.css';
+import Adverts from "../Adverts";
+import PropTypes from "prop-types";
 
 class Main extends Component {
   render() {
@@ -8,5 +10,9 @@ class Main extends Component {
     );
   }
 }
+
+Main.propTypes = {
+  // No props so far.
+};
 
 export default Main;

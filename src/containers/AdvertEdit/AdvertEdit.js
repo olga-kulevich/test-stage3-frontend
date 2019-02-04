@@ -1,5 +1,7 @@
 import React, { PureComponent } from 'react';
 import './AdvertEdit.css';
+import Adverts from "../Adverts";
+import PropTypes from "prop-types";
 
 export default class AdvertEdit extends PureComponent {
   render() {
@@ -11,3 +13,7 @@ export default class AdvertEdit extends PureComponent {
     )
   }
 }
+
+Adverts.propTypes = {
+  match: PropTypes.object.isRequired
+};

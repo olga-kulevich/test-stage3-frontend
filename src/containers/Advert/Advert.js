@@ -15,5 +15,5 @@ export default class Advert extends PureComponent {
 }
 
 Adverts.propTypes = {
-  match: PropTypes.array.isRequired
+  match: PropTypes.object.isRequired
 };
