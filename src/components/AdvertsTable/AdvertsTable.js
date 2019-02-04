@@ -3,8 +3,17 @@ import PropTypes from 'prop-types';
 import {Link, withRouter} from 'react-router-dom'
 
 class AdvertsTable extends PureComponent {
-  renderRows(adverts) {
+  constructor(props) {
+    super(props);
+    this.handleDeleteEvent = this.handleDeleteEvent.bind(this);
+  }
+
+  handleDeleteEvent(id) {
     const { onDeleteClick } = this.props;
+    onDeleteClick(id);
+  }
+
+  renderRows(adverts) {
 
     return adverts.map(advert => (
       <tr key={advert.id}>
@@ -14,7 +23,7 @@ class AdvertsTable extends PureComponent {
         <td>{advert.category}</td>
         <td>{advert.price}</td>
         <td>
-          <button onClick={() => onDeleteClick(advert.id)}>Delete</button>
+          <button onClick={() => this.handleDeleteEvent(advert.id)}>Delete</button>
         </td>
         <td>
           <button onClick={() => this.props.history.push(`/adverts/${advert.id}/edit`)}>Edit</button>

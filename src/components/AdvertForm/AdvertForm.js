@@ -25,11 +25,11 @@ class AdvertForm extends PureComponent {
 
   handleSubmit(event) {
     event.preventDefault();
+    const { onAddAdvert } = this.props;
+    onAddAdvert(this.state);
   }
 
   render() {
-    const { onAddAdvert } = this.props;
-
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
@@ -47,7 +47,7 @@ class AdvertForm extends PureComponent {
           <input type="number" value={this.state.price} onChange={this.handlePriceChange}/>
         </label>
 
-        <button onClick={() => onAddAdvert(this.state)}>AddAdvert</button>
+        <button>AddAdvert</button>
       </form>
     );
   }
