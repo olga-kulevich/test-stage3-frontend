@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, {PureComponent} from 'react';
 import './AdvertEdit.css';
 import Adverts from "../Adverts";
 import PropTypes from "prop-types";
