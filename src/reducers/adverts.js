@@ -10,12 +10,12 @@ const initialState = [
 export function advertsReducer(state = initialState, action) {
   switch (action.type) {
     case 'ADD_ADVERT':
-     return state.concat(action.data);
+      return state.concat(action.payload);
     case 'EDIT_ADVERT':
       return state;
     case 'DELETE_ADVERT':
       return state.filter((advert) => {
-        return advert.id !== action.id;
+        return advert.id !== action.payload.id;
       });
     default:
       return state;

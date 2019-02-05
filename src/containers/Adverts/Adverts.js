@@ -19,7 +19,7 @@ class Adverts extends PureComponent {
   }
 
   handleAdvertDelete(id) {
-    this.props.dispatch({type: 'DELETE_ADVERT', id});
+    this.props.dispatch({type: 'DELETE_ADVERT', payload: {id}});
     console.log(id);
   }
 

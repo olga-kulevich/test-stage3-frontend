@@ -35,7 +35,7 @@ class AdvertForm extends PureComponent {
 
     this.props.dispatch({
       type:'ADD_ADVERT',
-      data});
+      payload: data});
   }
 
   render() {
