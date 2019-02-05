@@ -1,15 +1,12 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import './index.css';
 import {Route, BrowserRouter as Router, Switch, Link} from 'react-router-dom';
 import {Main, Adverts, Authors, Advert, Author, AuthorAdd, AuthorEdit, AdvertAdd, AdvertEdit} from './containers';
 import {PATHS} from './constants';
-import reducers from './reducers';
-
-const store = createStore(reducers);
+import { store } from './store';
 
 class Root extends Component {
   render() {
