@@ -1,24 +1,25 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import { Route, BrowserRouter as Router, Switch, Link } from 'react-router-dom';
+import {Route, BrowserRouter as Router, Switch, Link} from 'react-router-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-import { Main, Adverts, Authors, Advert, Author, AuthorAdd, AuthorEdit, AdvertAdd, AdvertEdit } from './components';
-import { PATHS } from './constants';
+import {Main, Adverts, Authors, Advert, Author, AuthorAdd, AuthorEdit, AdvertAdd, AdvertEdit} from './containers';
+import {PATHS} from './constants';
+import PropTypes from "prop-types";
 
 const ADVERTS = [
-  {id: 1, category: 'Sporting Goods', price: '$49.99', title: 'Football'},
-  {id: 2, category: 'Sporting Goods', price: '$9.99', title: 'Baseball'},
-  {id: 3, category: 'Sporting Goods', price: '$29.99', title: 'Basketball'},
-  {id: 4, category: 'Electronics', price: '$99.99', title: 'iPod Touch'},
-  {id: 5, category: 'Electronics', price: '$399.99', title: 'iPhone 5'},
-  {id: 6, category: 'Electronics', price: '$199.99', title: 'Nexus 7'}
+  { id: 1, category: 'Sporting Goods', price: '$49.99', title: 'Football' },
+  { id: 2, category: 'Sporting Goods', price: '$9.99', title: 'Baseball' },
+  { id: 3, category: 'Sporting Goods', price: '$29.99', title: 'Basketball' },
+  { id: 4, category: 'Electronics', price: '$99.99', title: 'iPod Touch' },
+  { id: 5, category: 'Electronics', price: '$399.99', title: 'iPhone 5' },
+  { id: 6, category: 'Electronics', price: '$199.99', title: 'Nexus 7' }
 ];
 
 class Root extends Component {
   constructor(props) {
     super(props);
-    this.state = {adverts: props.adverts};
+    this.state = { adverts: props.adverts };
 
     this.deleteAdvert = this.deleteAdvert.bind(this);
     this.addAdvert = this.addAdvert.bind(this);
@@ -28,7 +29,7 @@ class Root extends Component {
     const adverts = this.state.adverts.filter((advert) => {
       return advert.id !== id;
     });
-    this.setState({adverts: adverts});
+    this.setState({ adverts: adverts });
   };
 
   addAdvert(advert) {
@@ -38,7 +39,7 @@ class Root extends Component {
       price: advert.price,
       title: advert.title
     };
-    this.setState({adverts: [...this.state.adverts, newAdvert]});
+    this.setState({ adverts: [...this.state.adverts, newAdvert] });
   };
 
   render() {
@@ -56,8 +57,10 @@ class Root extends Component {
           <Switch>
             <Route exact path={PATHS.main.path} component={Main}/>
             <Route exact path={PATHS.adverts.path} render={(props) => (
-              <Adverts {...props} adverts={this.state.adverts.map(advert => {return {...advert}})}
-                       delete={this.deleteAdvert}
+              <Adverts {...props} adverts={this.state.adverts.map(advert => {
+                return { ...advert }
+              })}
+                       onDeleteAdvert={this.deleteAdvert}
               />
             )}/>
             <Route exact path={PATHS.authors.path} component={Authors}/>
@@ -66,7 +69,7 @@ class Root extends Component {
             <Route exact path={PATHS.advertEdit.path} component={AdvertEdit}/>
             <Route exact path={PATHS.authorEdit.path} component={AuthorEdit}/>
             <Route exact path="/adverts/new" render={(props) => (
-              <AdvertAdd {...props} add={this.addAdvert}/>
+              <AdvertAdd {...props} onAddAdvert={this.addAdvert}/>
             )}
             />
             <Route exact path="" render={(props) => (
@@ -80,7 +83,11 @@ class Root extends Component {
   }
 }
 
-ReactDOM.render(<Root adverts={ADVERTS} />, document.getElementById('root'));
+Root.propTypes = {
+  adverts: PropTypes.array.isRequired
+};
+
+ReactDOM.render(<Root adverts={ADVERTS}/>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

@@ -1,13 +1,13 @@
-import React, { PureComponent } from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import './Adverts.css';
-import {AdvertsTable} from "../index";
+import {AdvertsTable} from "../../components";
 
 export default class Adverts extends PureComponent {
   render() {
     return (
       <div className="Adverts">
-        <AdvertsTable adverts={this.props.adverts} onDeleteClick={this.props.delete}/>
+        <AdvertsTable adverts={this.props.adverts} onDeleteClick={this.props.onDeleteAdvert}/>
         <button onClick={() => this.props.history.push("/adverts/new")}>AddAdvert</button>
       </div>
     );
@@ -16,6 +16,6 @@ export default class Adverts extends PureComponent {
 
 Adverts.propTypes = {
   adverts: PropTypes.array.isRequired,
-  delete: PropTypes.func.isRequired,
+  onDeleteAdvert: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired
 };

@@ -1,5 +1,7 @@
-import React, { PureComponent } from 'react';
+import React, {PureComponent} from 'react';
 import './AuthorAdd.css';
+import Adverts from "../Adverts";
+import PropTypes from "prop-types";
 
 export default class AuthorAdd extends PureComponent {
   render() {
@@ -11,3 +13,7 @@ export default class AuthorAdd extends PureComponent {
     )
   }
 }
+
+Adverts.propTypes = {
+  history: PropTypes.object.isRequired
+};
