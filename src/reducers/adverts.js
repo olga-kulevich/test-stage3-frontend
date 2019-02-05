@@ -7,7 +7,7 @@ const initialState = [
     { id: 6, category: 'Electronics', price: '$199.99', title: 'Nexus 7' }
   ];
 
-const advertsReducer = (state = initialState, action) => {
+export function advertsReducer(state = initialState, action) {
   switch (action.type) {
     case 'ADD_ADVERT':
      return state.concat(action.data);
@@ -20,6 +20,4 @@ const advertsReducer = (state = initialState, action) => {
     default:
       return state;
   }
-};
-
-export default advertsReducer;
+}

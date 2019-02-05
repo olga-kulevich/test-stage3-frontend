@@ -7,9 +7,9 @@ import './index.css';
 import {Route, BrowserRouter as Router, Switch, Link} from 'react-router-dom';
 import {Main, Adverts, Authors, Advert, Author, AuthorAdd, AuthorEdit, AdvertAdd, AdvertEdit} from './containers';
 import {PATHS} from './constants';
-import advertsReducer from './reducers/adverts.js';
+import reducers from './reducers';
 
-const store = createStore(advertsReducer);
+const store = createStore(reducers);
 
 class Root extends Component {
   render() {

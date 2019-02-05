@@ -47,7 +47,7 @@ class Adverts extends PureComponent {
 
 const mapStateToProps = (state) => {
   return {
-    adverts: state
+    adverts: state.Adverts
   }
 };
 
