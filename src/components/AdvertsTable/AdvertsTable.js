@@ -1,6 +1,5 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {Link, withRouter} from 'react-router-dom'
 
 class AdvertsTable extends PureComponent {
   renderRows(adverts) {
@@ -43,10 +42,9 @@ class AdvertsTable extends PureComponent {
 
 AdvertsTable.propTypes = {
   adverts: PropTypes.array.isRequired,
-  history: PropTypes.object.isRequired,
   onDeleteClick: PropTypes.func.isRequired,
   onEditClick: PropTypes.func.isRequired,
   onTitleClick: PropTypes.func.isRequired
 };
 
-export default withRouter(AdvertsTable);
+export default AdvertsTable;
