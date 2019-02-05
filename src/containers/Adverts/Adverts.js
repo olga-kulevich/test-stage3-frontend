@@ -1,21 +1,29 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import './Adverts.css';
 import {AdvertsTable} from "../../components";
 
-export default class Adverts extends PureComponent {
+class Adverts extends PureComponent {
   render() {
     return (
       <div className="Adverts">
-        <AdvertsTable adverts={this.props.adverts} onDeleteClick={this.props.onDeleteAdvert}/>
+        <AdvertsTable/>
         <button onClick={() => this.props.history.push("/adverts/new")}>AddAdvert</button>
+        {console.log(this.props.adverts)}
       </div>
     );
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    adverts: state
+  }
+};
+
 Adverts.propTypes = {
-  adverts: PropTypes.array.isRequired,
-  onDeleteAdvert: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired
 };
+
+export default connect(mapStateToProps)(Adverts);

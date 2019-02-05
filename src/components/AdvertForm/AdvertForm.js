@@ -1,5 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 
 class AdvertForm extends PureComponent {
   constructor(props) {
@@ -25,8 +26,16 @@ class AdvertForm extends PureComponent {
 
   handleSubmit(event) {
     event.preventDefault();
-    const { onAddAdvert } = this.props;
-    onAddAdvert(this.state);
+    const data = {
+      id: Math.random(),
+      category: this.state.category,
+      price: this.state.price,
+      title: this.state.title
+    };
+
+    this.props.dispatch({
+      type:'ADD_ADVERT',
+      data});
   }
 
   render() {
@@ -53,8 +62,14 @@ class AdvertForm extends PureComponent {
   }
 }
 
-AdvertForm.propTypes = {
-  onAddAdvert: PropTypes.func.isRequired
+const mapStateToProps = (state) => {
+  return {
+    adverts: state
+  }
 };
 
-export default AdvertForm;
+AdvertForm.propTypes = {
+  adverts: PropTypes.array.isRequired
+};
+
+export default connect(mapStateToProps)(AdvertForm);

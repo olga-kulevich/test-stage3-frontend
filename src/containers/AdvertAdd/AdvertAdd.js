@@ -2,18 +2,26 @@ import React, { PureComponent } from 'react';
 import './AdvertAdd.css';
 import { AdvertForm } from "../../components";
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
 
-export default class AdvertAdd extends PureComponent {
+class AdvertAdd extends PureComponent {
   render() {
-    const { onAddAdvert } = this.props;
     return (
       <div>
-        <AdvertForm onAddAdvert={onAddAdvert}/>
+        <AdvertForm/>
       </div>
     )
   }
 }
 
-AdvertAdd.propTypes = {
-  onAddAdvert: PropTypes.func.isRequired
+const mapStateToProps = (state) => {
+  return {
+    adverts: state
+  }
 };
+
+AdvertAdd.propTypes = {
+  adverts: PropTypes.array.isRequired
+};
+
+export default connect(mapStateToProps)(AdvertAdd);
