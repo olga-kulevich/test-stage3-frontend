@@ -1,3 +1,6 @@
 import store from './singletonStore';
+import Dispatcher from './dispatcher';
 
-export { store };
+const dispatcher = new Dispatcher(store);
+
+export { dispatcher, store };

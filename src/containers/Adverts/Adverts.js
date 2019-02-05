@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import './Adverts.css';
 import {AdvertsTable} from "../../components";
 import {Link} from "react-router-dom";
+import { performDeleteAdvert } from '../../action_performers/adverts';
 
 class Adverts extends PureComponent {
   constructor(props) {
@@ -19,7 +20,7 @@ class Adverts extends PureComponent {
   }
 
   handleAdvertDelete(id) {
-    this.props.dispatch({type: 'DELETE_ADVERT', payload: {id}});
+    performDeleteAdvert(id);
     console.log(id);
   }
 
