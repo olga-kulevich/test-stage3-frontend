@@ -1,23 +1,22 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {Link, withRouter} from 'react-router-dom'
-import { connect } from 'react-redux';
-
 
 class AdvertsTable extends PureComponent {
   renderRows(adverts) {
+    const {onDeleteClick, onEditClick, onTitleClick} = this.props;
     return adverts.map(advert => (
-      <tr key={advert.id}>
-        <td>
-          <Link to={`/adverts/${advert.id}`}>{advert.title}</Link>
+      <tr key={advert.id} data-id={advert.id}>
+        <td onClick={() => onTitleClick(advert.id)}>
+          {advert.title}
         </td>
         <td>{advert.category}</td>
         <td>{advert.price}</td>
         <td>
-          <button onClick={() => this.props.dispatch({type: 'DELETE_ADVERT', id: advert.id})}>Delete</button>
+          <button onClick={() => onDeleteClick(advert.id)}>Delete</button>
         </td>
         <td>
-          <button onClick={() => this.props.history.push(`/adverts/${advert.id}/edit`)}>Edit</button>
+          <button onClick={() => onEditClick(advert.id)}>Edit</button>
         </td>
       </tr>
     ));
@@ -42,15 +41,12 @@ class AdvertsTable extends PureComponent {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    adverts: state
-  }
-};
-
 AdvertsTable.propTypes = {
   adverts: PropTypes.array.isRequired,
-  history: PropTypes.object.isRequired
+  history: PropTypes.object.isRequired,
+  onDeleteClick: PropTypes.func.isRequired,
+  onEditClick: PropTypes.func.isRequired,
+  onTitleClick: PropTypes.func.isRequired
 };
 
-export default connect(mapStateToProps)(withRouter(AdvertsTable));
+export default withRouter(AdvertsTable);

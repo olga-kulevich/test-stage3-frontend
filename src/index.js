@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import PropTypes from "prop-types";
 import * as serviceWorker from './serviceWorker';
 import './index.css';
 import {Route, BrowserRouter as Router, Switch, Link} from 'react-router-dom';
