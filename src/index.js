@@ -1,50 +1,17 @@
-import React, {Component} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import './index.css';
-import {Route, BrowserRouter as Router, Switch, Link} from 'react-router-dom';
-import {Main, Adverts, Authors, Advert, Author, AuthorAdd, AuthorEdit, AdvertAdd, AdvertEdit} from './containers';
-import {PATHS} from './constants';
+import {BrowserRouter as Router} from 'react-router-dom';
+import {Routes} from './services/routes'
 import { store } from './store';
-
-class Root extends Component {
-  render() {
-    return <div>
-      <Router>
-        <div>
-          <ul>
-            <li>
-              <Link to={PATHS.adverts.path}>Adverts</Link>
-            </li>
-            <li>
-              <Link to={PATHS.authors.path}>Authors</Link>
-            </li>
-          </ul>
-          <Switch>
-            <Route exact path={PATHS.main.path} component={Main}/>
-            <Route exact path={PATHS.adverts.path} component={Adverts}/>
-            <Route exact path={PATHS.authors.path} component={Authors}/>
-            <Route exact path={PATHS.advert.path} component={Advert}/>
-            <Route exact path={PATHS.author.path} component={Author}/>
-            <Route exact path={PATHS.advertEdit.path} component={AdvertEdit}/>
-            <Route exact path={PATHS.authorEdit.path} component={AuthorEdit}/>
-            <Route exact path="/adverts/new" component={AdvertAdd}/>
-            <Route exact path="/authors/new" component={AuthorAdd}/>
-          </Switch>
-        </div>
-      </Router>
-    </div>
-  }
-}
-
-Root.propTypes = {
-  // here will be props
-};
 
 ReactDOM.render(
     <Provider store={store}>
-      <Root/>
+      <Router>
+        <Routes />
+      </Router>
     </Provider>,
     document.getElementById('root'));
 
