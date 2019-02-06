@@ -7,3 +7,4 @@ export {default as AdvertAdd} from './AdvertAdd';
 export {default as AdvertEdit} from './AdvertEdit';
 export {default as AuthorAdd} from './AuthorAdd';
 export {default as AuthorEdit} from './AuthorEdit';
+export {default as App} from './App';
