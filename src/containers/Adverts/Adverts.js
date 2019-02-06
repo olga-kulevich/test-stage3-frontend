@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import './Adverts.css';
 import {AdvertsTable} from "../../components";
-import {Link} from "react-router-dom";
 import { performDeleteAdvert } from '../../action_performers/adverts';
 
 class Adverts extends PureComponent {
