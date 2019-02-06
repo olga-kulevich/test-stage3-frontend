@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import './Adverts.css';
 import {AdvertsTable} from "../../components";
-import { performDeleteAdvert } from '../../action_performers/adverts';
+import { performGetAdverts, performDeleteAdvert } from '../../action_performers/adverts';
 
 class Adverts extends PureComponent {
   constructor(props) {
@@ -12,6 +12,10 @@ class Adverts extends PureComponent {
     this.handleAdvertDelete = this.handleAdvertDelete.bind(this);
     this.goToAdvertEditPage = this.goToAdvertEditPage.bind(this);
     this.goToAdvertPage = this.goToAdvertPage.bind(this);
+  }
+
+  componentDidMount() {
+    performGetAdverts();
   }
 
   goToAdvertAddPage() {

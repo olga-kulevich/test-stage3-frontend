@@ -1,4 +1,9 @@
 import { dispatcher } from '../store';
+import { getAdverts } from '../services/api/adverts';
+
+export function performGetAdverts() {
+    return dispatcher.dispatchPromise(getAdverts, 'GET_ADVERTS');
+}
 
 export function performDeleteAdvert(id) {
     return dispatcher.dispatch('DELETE_ADVERT', {id});

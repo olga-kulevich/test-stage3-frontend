@@ -40,6 +40,25 @@ class Dispatcher {
 
         store.dispatch(this.createAction(type, payload));
     }
+
+    /**
+     * Dispatch promise
+     *
+     * @param {Function} operation - Function/Operation that return Promise
+     * @param {String} type - Action type
+     *
+     * @returns {*} Dispatch action
+     */
+    dispatchPromise(operation, type) {
+        this.dispatch(type, null);
+
+        operation()
+          .then(result => this.dispatch(type, result))
+          .catch(err => {
+              console.error("error dispatching " + type, err)
+              this.dispatch(type, null);
+          });
+    }
 }
 
 export default Dispatcher;
