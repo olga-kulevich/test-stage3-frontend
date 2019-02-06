@@ -2,6 +2,7 @@ import React, {PureComponent} from 'react';
 import {connect} from "react-redux";
 import {PATHS} from "../../constants";
 import {Menu} from "../../components";
+import { withRouter } from "react-router-dom";
 
 class App extends PureComponent {
   constructor(props) {
@@ -23,6 +24,7 @@ class App extends PureComponent {
         <Menu onAdvertsItemClick={this.goToAdvertsPage}
               onAuthorsItemClick={this.goToAuthorsPage}
         />
+        <div>{this.props.children}</div>
       </div>
     )
   }
@@ -34,4 +36,4 @@ const mapStateToProps = (state) => {
   }
 };
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps)(withRouter(App));
