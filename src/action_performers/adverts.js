@@ -1,12 +1,12 @@
 import { dispatcher } from '../store';
-import { getAdverts } from '../services/api/adverts';
+import { getAdverts, deleteAdvert } from '../services/api/adverts';
 
 export function performGetAdverts() {
-    return dispatcher.dispatchPromise(getAdverts, 'GET_ADVERTS');
+    return dispatcher.dispatchPromise(getAdverts, 'GET_ADVERTS', state => state.Adverts.adverts.loading);
 }
 
 export function performDeleteAdvert(id) {
-    return dispatcher.dispatch('DELETE_ADVERT', {id});
+    return dispatcher.dispatchPromise(deleteAdvert, 'DELETE_ADVERT', state => state.Adverts.deletedAdvert.loading, [id] );
 }
 
 export function performAddAdvert(data) {

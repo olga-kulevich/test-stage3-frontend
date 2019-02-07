@@ -6,9 +6,9 @@ class Dispatcher {
     /**
      * @constructor
      * @param {Object} store - Application store instance
-     * that implements dispatch method
+     * that implements getState and dispatch methods
      */
-    constructor(store = { dispatch: () => {} }) {
+    constructor(store = { getState: () => {}, dispatch: () => {} }) {
         this.store = store;
     }
 
@@ -20,11 +20,14 @@ class Dispatcher {
      *
      * @param {String} type - Action type
      * @param {*} [payload] - Some data or error details
+     * @param {*} [error] - Error object
+     * @param {*} [loading] - Loading indicator
+     * @param {*} [meta] - Addition action information (like arguments)
      *
      * @returns {Object} New action object
      */
-    createAction(type, payload) {
-        return { type, payload };
+    createAction(type, payload, error, loading, meta) {
+        return { type, payload, error, loading, meta };
     }
 
     /**
@@ -32,13 +35,16 @@ class Dispatcher {
      *
      * @param {String} type - Action type
      * @param {*} [payload] - Some data or error details
+     * @param {*} [error] - Error object
+     * @param {*} [loading] - Loading indicator
+     * @param {*} [meta] - Addition action information (like arguments)
      *
      * @returns {*} Dispatch action
      */
-    dispatch(type, payload) {
+    dispatchAction(type, payload, error, loading, meta) {
         const { store } = this;
 
-        store.dispatch(this.createAction(type, payload));
+        store.dispatch(this.createAction(type, payload, error, loading, meta));
     }
 
     /**
@@ -46,18 +52,49 @@ class Dispatcher {
      *
      * @param {Function} operation - Function/Operation that return Promise
      * @param {String} type - Action type
+     * @param {Function} isLoading - Getter for pending indicator
+     * @param {Array<*>} [args] - Operation arguments
      *
      * @returns {*} Dispatch action
      */
-    dispatchPromise(operation, type) {
-        this.dispatch(type, null);
+    dispatchPromise(operation, type, isLoading, args = []) {
+        const { store } = this;
 
-        operation()
-          .then(result => this.dispatch(type, result))
-          .catch(err => {
-              console.error("error dispatching " + type, err)
-              this.dispatch(type, null);
-          });
+        if (!isLoading(store.getState())) {
+            this.dispatchAction(type, null, null, true, args);
+
+            operation(...args)
+              .then(result => this.dispatchAction(type, result && result.data, null, false, args))
+              .catch(err => {
+                  const { response: { status = 500, data = {} } = {} } = err || {};
+                  this.dispatchAction(type, null, { ...data, status }, false, args);
+              });
+        }
+    }
+
+    /**
+     * Dispatch async
+     *
+     * @param {Function} operation - Async function/operation that has first-error callback
+     * @param {String} type - Action type
+     * @param {Function} isLoading - Getter for pending indicator
+     * @param {Array<*>} [args] - Operation arguments
+     *
+     * @returns {*} Dispatch action
+     */
+    dispatchAsync(operation, type, isLoading, args = []) {
+        const { store } = this;
+
+        if (!isLoading(store.getState())) {
+            this.dispatchAction(type, null, null, true, args);
+
+            operation(...args, (error, data) => {
+                if (error) {
+                    return this.dispatchAction(type, null, error, false, args);
+                }
+                return this.dispatchAction(type, data, null, false, args);
+            });
+        }
     }
 }
 
