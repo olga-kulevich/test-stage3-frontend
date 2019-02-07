@@ -2,7 +2,6 @@ import Axios from 'axios';
 
 export function getAdverts() {
    return Axios.get('http://localhost:3000/api/adverts').then(response => {
-     console.log(11, response.data);
      const data = response.data.map(advert => {
        return {
          id: advert._id,
@@ -11,11 +10,21 @@ export function getAdverts() {
          title: advert.title,
        }
      });
-     console.log(2, data);
      return { data };
   });
 }
 
 export function deleteAdvert(id) {
   return Axios.delete(`http://localhost:3000/api/adverts/${id}`);
+}
+
+export function addAdvert(data) {
+  return Axios.post(`http://localhost:3000/api/adverts/`, data).then(response => {
+    return {data: {
+      id: response.data.advert._id,
+      category: response.data.advert.category,
+      price: response.data.advert.price,
+      title: response.data.advert.title,
+    }};
+  });
 }

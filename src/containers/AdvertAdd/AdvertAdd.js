@@ -13,9 +13,7 @@ class AdvertAdd extends PureComponent {
 
   handleAdvertAdd(data) {
     performAddAdvert(data);
-    alert('Advert added successfully');
     this.props.history.push(`/adverts`);
-    console.log(data);
   }
 
   render() {
@@ -29,7 +27,7 @@ class AdvertAdd extends PureComponent {
 
 const mapStateToProps = (state) => {
   return {
-    adverts: state.Adverts
+    adverts: state.Adverts.adverts.data
   }
 };
 

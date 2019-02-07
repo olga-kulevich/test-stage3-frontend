@@ -50,7 +50,12 @@ export function advertsReducer(state = initialState, action) {
         }
       };
     case 'ADD_ADVERT':
-      return state.concat(action.payload);
+      return {
+        ...state,
+        adverts: {
+          data: action.payload ? state.adverts.data.concat(action.payload) : state.adverts.data
+        }
+      };
     case 'EDIT_ADVERT':
       return state;
     default:
