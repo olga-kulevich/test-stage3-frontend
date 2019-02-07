@@ -27,22 +27,28 @@ export function advertsReducer(state = initialState, action) {
     }
     case 'DELETE_ADVERT':
       const payload = action && action.payload;
-      console.log (payload);
-      state.adverts.data.filter((advert) => {
-        return advert.id !== action.meta.id;
-      });
-      console.log(action);
+      const error = action && action.error;
+
+      let newData;
+      if (payload && !error) {
+        newData = state.adverts.data.filter((advert) => {
+          return advert.id !== action.meta[0];
+        });
+      } else {
+        newData = state.adverts.data;
+      }
+
       return {
         ...state,
         deletedAdvert: {
           data: payload ? payload : state.deletedAdvert.data,
           loading: action.loading,
           error: action.error
+        },
+        adverts: {
+          data: newData,
         }
       };
-      return state.adverts.data.filter((advert) => {
-        return advert.id !== action.payload;
-      });
     case 'ADD_ADVERT':
       return state.concat(action.payload);
     case 'EDIT_ADVERT':
