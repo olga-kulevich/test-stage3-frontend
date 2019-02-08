@@ -12,6 +12,7 @@ class AdvertAdd extends PureComponent {
   }
 
   handleAdvertAdd(data) {
+    data.id = Math.random();
     performAddAdvert(data);
     this.props.history.push(`/adverts`);
   }
@@ -19,7 +20,7 @@ class AdvertAdd extends PureComponent {
   render() {
     return (
       <div>
-        <AdvertForm adverts={this.props.adverts} onAddClick={this.handleAdvertAdd}/>
+        <AdvertForm adverts={this.props.adverts} onSubmit={this.handleAdvertAdd}/>
       </div>
     )
   }

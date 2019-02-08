@@ -1,5 +1,5 @@
 import { dispatcher } from '../store';
-import { getAdverts, deleteAdvert, addAdvert } from '../services/api/adverts';
+import { getAdverts, deleteAdvert, addAdvert, getAdvert, editAdvert } from '../services/api/adverts';
 
 export function performGetAdverts() {
     return dispatcher.dispatchPromise(getAdverts, 'GET_ADVERTS',
@@ -14,4 +14,14 @@ export function performDeleteAdvert(id) {
 export function performAddAdvert(data) {
     return dispatcher.dispatchPromise(addAdvert, 'ADD_ADVERT',
       state => state.Adverts.deletedAdvert.loading, [data]);
+}
+
+export function performGetAdvert(id) {
+    return dispatcher.dispatchPromise(getAdvert, 'GET_ADVERT',
+      state => state.Adverts.deletedAdvert.loading, [id] );
+}
+
+export function performEditAdvert(id, data) {
+    return dispatcher.dispatchPromise(editAdvert, 'ADD_ADVERT',
+      state => state.Adverts.deletedAdvert.loading, [id, data]);
 }

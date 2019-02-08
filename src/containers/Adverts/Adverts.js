@@ -50,6 +50,7 @@ class Adverts extends PureComponent {
 }
 
 const mapStateToProps = (state) => {
+    console.log('556', state.Adverts);
   return {
     adverts: state.Adverts.adverts.data
   }

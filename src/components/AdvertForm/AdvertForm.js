@@ -4,9 +4,22 @@ import PropTypes from 'prop-types';
 class AdvertForm extends PureComponent {
   constructor(props) {
     super(props);
-    this.state = { title: '', category: '', price: '' };
+    this.state = { title: this.props.advert.title, category: this.props.advert.category, price: this.props.advert.price };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.advert.title !== prevProps.advert.title ||
+      this.props.advert.category !== prevProps.advert.category ||
+      this.props.advert.price !== prevProps.advert.price) {
+
+      this.setState({
+        title: this.props.advert.title,
+        category: this.props.advert.category,
+        price: this.props.advert.price
+      })
+    }
   }
 
   handleInputChange(event) {
@@ -19,14 +32,13 @@ class AdvertForm extends PureComponent {
 
   handleSubmit(event) {
     event.preventDefault();
+    const {onSubmit} = this.props;
     const data = {
-      id: Math.random(),
       category: this.state.category,
       price: this.state.price,
       title: this.state.title
     };
-    const {onAddClick} = this.props;
-    onAddClick(data);
+    onSubmit(data);
   }
 
   render() {
@@ -47,15 +59,23 @@ class AdvertForm extends PureComponent {
           <input type="number" name="price" value={this.state.price} onChange={this.handleInputChange}/>
         </label>
 
-        <button>AddAdvert</button>
+        <button>Save</button>
       </form>
     );
   }
 }
 
+AdvertForm.defaultProps = {
+  advert: {
+    title: '',
+    category: '',
+    price: ''
+  }
+};
+
 AdvertForm.propTypes = {
-  adverts: PropTypes.array.isRequired,
-  onAddClick: PropTypes.func.isRequired
+  advert: PropTypes.array.isRequired,
+  onSubmit: PropTypes.func
 };
 
 export default AdvertForm;

@@ -16,13 +16,14 @@ class AdvertsTable extends PureComponent {
           <DeleteButton onDeleteClick={onDeleteClick} id={advert.id} />
         </td>
         <td>
-          <button onClick={() => onEditClick(advert.id)}>Edit</button>
+          <button onClick={() => onEditClick(advert.id)} id={advert.id}>Edit</button>
         </td>
       </tr>
     ));
   }
 
   render() {
+        console.log('adverts', this.props.adverts);
     return (
       <table>
         <thead>

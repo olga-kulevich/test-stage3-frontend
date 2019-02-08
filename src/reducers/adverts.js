@@ -8,6 +8,11 @@ const initialState = {
     data: [],
     error: null,
     loading: false
+  },
+  advert: {
+    data: {},
+    error: null,
+    loading: false
   }
 };
 
@@ -15,11 +20,23 @@ export function advertsReducer(state = initialState, action) {
   switch (action.type) {
     case 'GET_ADVERTS': {
       const payload = action && action.payload;
-      console.log(action);
+      console.log('hgfhf', payload ? payload : state.advert.data);
       return {
         ...state,
         adverts: {
           data: payload ? payload : state.adverts.data,
+          loading: action.loading,
+          error: action.error
+        }
+      };
+    }
+    case 'GET_ADVERT': {
+      const payload = action && action.payload;
+      console.log(111111111111, action);
+      return {
+        ...state,
+        advert: {
+          data: payload ? payload : state.advert.data,
           loading: action.loading,
           error: action.error
         }
@@ -57,7 +74,13 @@ export function advertsReducer(state = initialState, action) {
         }
       };
     case 'EDIT_ADVERT':
-      return state;
+      return {
+        ...state,
+        advert: {
+          data: action.payload ? action.payload : state.advert.data
+        }
+      };
+
     default:
       return state;
   }

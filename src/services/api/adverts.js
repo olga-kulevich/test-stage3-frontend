@@ -28,3 +28,26 @@ export function addAdvert(data) {
     }};
   });
 }
+
+export function getAdvert(id) {
+  return Axios.get(`http://localhost:3000/api/adverts/${id}`).then(response => {
+    return {data: {
+      id: response.data._id,
+      category: response.data.category,
+      price: response.data.price,
+      title: response.data.title,
+    }};
+  });
+}
+
+export function editAdvert(id, data) {
+  console.log(888888, id, data)
+  return Axios.put(`http://localhost:3000/api/adverts/${id}`, data).then(response => {
+    return {data: {
+        id: response.data.advert._id,
+        category: response.data.advert.category,
+        price: response.data.advert.price,
+        title: response.data.advert.title,
+      }};
+  });
+}
