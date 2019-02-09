@@ -8,6 +8,8 @@ export const Routes = () => (
   <div>
     <App>
       <Switch>
+        <Route exact path={PATHS.advertNew.path} component={AdvertAdd}/>
+        <Route exact path={PATHS.authorNew.path} component={AuthorAdd}/>
         <Route exact path={PATHS.main.path} component={Main}/>
         <Route exact path={PATHS.adverts.path} component={Adverts}/>
         <Route exact path={PATHS.authors.path} component={Authors}/>
@@ -15,8 +17,6 @@ export const Routes = () => (
         <Route exact path={PATHS.author.path} component={Author}/>
         <Route exact path={PATHS.advertEdit.path} component={AdvertEdit}/>
         <Route exact path={PATHS.authorEdit.path} component={AuthorEdit}/>
-        <Route exact path="/adverts/new" component={AdvertAdd}/>
-        <Route exact path="/authors/new" component={AuthorAdd}/>
       </Switch>
     </App>
   </div>

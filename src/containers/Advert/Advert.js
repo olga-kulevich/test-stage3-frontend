@@ -4,6 +4,9 @@ import PropTypes from "prop-types";
 import Adverts from "../Adverts";
 
 export default class Advert extends PureComponent {
+  constructor(props) {
+    super(props);
+  }
   render() {
     const { params } = this.props.match;
     return (

@@ -9,10 +9,10 @@ export const PATHS = {
     path: '/authors'
   },
   advert: {
-    path: '/adverts/:id(\\d+)'
+    path: '/adverts/:id'
   },
   author: {
-    path: '/authors/:id(\\d+)'
+    path: '/authors/:id'
   },
   advertEdit: {
     path: '/adverts/:id/edit'
