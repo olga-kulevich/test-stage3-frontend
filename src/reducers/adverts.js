@@ -74,10 +74,20 @@ export function advertsReducer(state = initialState, action) {
         }
       };
     case 'EDIT_ADVERT':
+      let newAdverts = state.adverts.data.map((advert) => {
+        if (advert.id === action.meta[0]) {
+          return Object.assign({},advert, action.meta[1])
+        }
+        return advert;
+      });
+
       return {
         ...state,
         advert: {
           data: action.payload ? action.payload : state.advert.data
+        },
+        adverts: {
+          data: newAdverts,
         }
       };
 

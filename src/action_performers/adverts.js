@@ -22,6 +22,6 @@ export function performGetAdvert(id) {
 }
 
 export function performEditAdvert(id, data) {
-    return dispatcher.dispatchPromise(editAdvert, 'ADD_ADVERT',
+    return dispatcher.dispatchPromise(editAdvert, 'EDIT_ADVERT',
       state => state.Adverts.deletedAdvert.loading, [id, data]);
 }
