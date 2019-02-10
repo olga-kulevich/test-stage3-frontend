@@ -2,21 +2,54 @@ import React, { PureComponent } from 'react';
 import './Advert.css';
 import PropTypes from "prop-types";
 import Adverts from "../Adverts";
+import {performGetAdvert} from "../../action_performers/adverts";
+import {connect} from "react-redux";
+import {Button} from "../../components";
 
-export default class Advert extends PureComponent {
+class Advert extends PureComponent {
   constructor(props) {
     super(props);
+    this.state = {
+      title: '',
+      category: '',
+      price: ''
+    };
+    this.goToAdvertsPage = this.goToAdvertsPage.bind(this);
   }
+
+  componentDidMount() {
+    performGetAdvert(this.props.match.params.id);
+  }
+
+  goToAdvertsPage() {
+    this.props.history.push(`/adverts/`);
+  }
+
   render() {
-    const { params } = this.props.match;
+    const {title, category, price} = this.props.advert;
     return (
-      <div>
-        <h1>Advert {params.id}</h1>
+      <div className="advert">
+        <h3>Title:</h3>
+        <p>{title}</p>
+        <h3>Category:</h3>
+        <p>{category}</p>
+        <h3>Price:</h3>
+        <p>{price}</p>
+        <Button value='Cancel' onClick={this.goToAdvertsPage} />
       </div>
     )
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    advert: state.Adverts.advert.data
+  }
+};
+
 Adverts.propTypes = {
+  advert: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired
 };
+
+export default connect(mapStateToProps)(Advert);
