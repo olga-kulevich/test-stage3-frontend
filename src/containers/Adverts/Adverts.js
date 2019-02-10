@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import './Adverts.css';
-import {AdvertsTable} from "../../components";
+import {AdvertsTable, Button} from "../../components";
 import { performGetAdverts, performDeleteAdvert } from '../../action_performers/adverts';
 
 class Adverts extends PureComponent {
@@ -42,7 +42,7 @@ class Adverts extends PureComponent {
                       onEditClick={this.goToAdvertEditPage}
                       onTitleClick={this.goToAdvertPage}
         />
-        <button onClick={this.goToAdvertAddPage}>AddAdvert</button>
+        <Button value='Add Advert' onClick={this.goToAdvertAddPage} />
       </div>
     );
   }

@@ -1,5 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+import {Button} from "../../components";
 
 class AdvertForm extends PureComponent {
   constructor(props) {
@@ -63,7 +64,7 @@ class AdvertForm extends PureComponent {
           <input type="number" name="price" value={this.state.price} onChange={this.handleInputChange}/>
         </label>
 
-        <button>Save</button>
+        <Button value='Save' />
       </form>
     );
   }
