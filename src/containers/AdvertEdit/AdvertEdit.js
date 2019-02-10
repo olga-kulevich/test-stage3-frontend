@@ -18,7 +18,6 @@ class AdvertEdit extends PureComponent {
 
   handleAdvertEdit(advert) {
     const id  = this.props.match.params.id;
-    console.log(2222, id);
     performEditAdvert(id, advert);
     this.props.history.push(`/adverts`);
   }

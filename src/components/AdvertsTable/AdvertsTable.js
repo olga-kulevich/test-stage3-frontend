@@ -23,7 +23,6 @@ class AdvertsTable extends PureComponent {
   }
 
   render() {
-        console.log('adverts', this.props.adverts);
     return (
       <table>
         <thead>

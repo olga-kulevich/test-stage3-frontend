@@ -20,7 +20,6 @@ export function advertsReducer(state = initialState, action) {
   switch (action.type) {
     case 'GET_ADVERTS': {
       const payload = action && action.payload;
-      console.log('hgfhf', payload ? payload : state.advert.data);
       return {
         ...state,
         adverts: {
@@ -32,7 +31,6 @@ export function advertsReducer(state = initialState, action) {
     }
     case 'GET_ADVERT': {
       const payload = action && action.payload;
-      console.log(111111111111, action);
       return {
         ...state,
         advert: {

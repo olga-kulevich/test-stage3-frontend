@@ -24,7 +24,6 @@ class Adverts extends PureComponent {
 
   handleAdvertDelete(id) {
     performDeleteAdvert(id);
-    console.log(id);
   }
 
   goToAdvertEditPage(id) {
@@ -50,7 +49,6 @@ class Adverts extends PureComponent {
 }
 
 const mapStateToProps = (state) => {
-    console.log('556', state.Adverts);
   return {
     adverts: state.Adverts.adverts.data
   }

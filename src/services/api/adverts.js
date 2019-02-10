@@ -41,7 +41,6 @@ export function getAdvert(id) {
 }
 
 export function editAdvert(id, data) {
-  console.log(888888, id, data)
   return Axios.put(`http://localhost:3000/api/adverts/${id}`, data).then(response => {
     return {data: {
         id: response.data.advert._id,
