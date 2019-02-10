@@ -11,15 +11,34 @@ class AdvertEdit extends PureComponent {
     super(props);
     this.handleAdvertEdit = this.handleAdvertEdit.bind(this);
     this.goToAdvertsPage = this.goToAdvertsPage.bind(this);
+
+    this.state = {
+      title: "",
+      category: "",
+      price: ""
+    };
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.advert.title !== prevProps.advert.title ||
+      this.props.advert.category !== prevProps.advert.category ||
+      this.props.advert.price !== prevProps.advert.price) {
+
+      this.setState({
+        title: this.props.advert.title,
+        category: this.props.advert.category,
+        price: this.props.advert.price
+      })
+    }
   }
 
   componentDidMount() {
     performGetAdvert(this.props.match.params.id);
   }
 
-  handleAdvertEdit(advert) {
+  handleAdvertEdit() {
     const id  = this.props.match.params.id;
-    performEditAdvert(id, advert);
+    performEditAdvert(id, this.state);
     this.props.history.push(`/adverts`);
   }
 
@@ -31,7 +50,8 @@ class AdvertEdit extends PureComponent {
     const { params } = this.props.match;
     return (
       <div className="advert-edit">
-        <AdvertForm advert={this.props.advert} onSubmit={this.handleAdvertEdit} onCancelClick={this.goToAdvertsPage}/>
+        <AdvertForm advert={this.state} onSubmit={this.handleAdvertEdit} onCancelClick={this.goToAdvertsPage}
+                    handleStateChange={(newState) => { this.setState(newState); }} />
         <h1>AdvertEdit {params.id}</h1>
       </div>
     )

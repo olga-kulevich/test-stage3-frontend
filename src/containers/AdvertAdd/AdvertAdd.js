@@ -10,9 +10,16 @@ class AdvertAdd extends PureComponent {
     super(props);
     this.handleAdvertAdd = this.handleAdvertAdd.bind(this);
     this.goToAdvertsPage = this.goToAdvertsPage.bind(this);
+
+    this.state = {
+      title: "",
+      category: "",
+      price: ""
+    };
   }
 
-  handleAdvertAdd(data) {
+  handleAdvertAdd() {
+    const data = this.state;
     data.id = Math.random();
     performAddAdvert(data);
     this.props.history.push(`/adverts`);
@@ -25,7 +32,8 @@ class AdvertAdd extends PureComponent {
   render() {
     return (
       <div className="adverts-add">
-        <AdvertForm adverts={this.props.adverts} onSubmit={this.handleAdvertAdd} onCancelClick={this.goToAdvertsPage}/>
+        <AdvertForm advert={this.state} onSubmit={this.handleAdvertAdd} onCancelClick={this.goToAdvertsPage}
+                    handleStateChange={(newState) => { this.setState(newState); }} />
       </div>
     )
   }
