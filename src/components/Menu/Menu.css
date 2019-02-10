@@ -22,10 +22,7 @@
 }
 
 .header-menu__item:hover,
-.header-menu__item:focus {
-    border-bottom: 2px solid #FE6B8B;;
-}
-
-.header-menu__item:active {
+.header-menu__item:focus,
+.header-menu__item__active {
     border-bottom: 2px solid #FE6B8B;;
 }
