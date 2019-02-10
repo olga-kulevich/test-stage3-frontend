@@ -1,7 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import DeleteButton from './DeleteButton';
-import {Button} from "../../components";
+import {ButtonDelete, Button} from "../../components";
 
 class AdvertsTable extends PureComponent {
   renderRows(adverts) {
@@ -14,7 +13,7 @@ class AdvertsTable extends PureComponent {
         <td>{advert.category}</td>
         <td>{advert.price}</td>
         <td>
-          <DeleteButton onDeleteClick={onDeleteClick} id={advert.id} />
+          <ButtonDelete onDeleteClick={onDeleteClick} id={advert.id} />
         </td>
         <td>
           <Button value='Edit' onClick={() => onEditClick(advert.id)} id={advert.id} />

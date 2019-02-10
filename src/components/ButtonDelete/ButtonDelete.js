@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
+import './ButtonDelete.css';
 
-class DeleteButton extends Component {
+class ButtonDelete extends Component {
   constructor(props) {
     super(props);
     this.state = {loading: props.loading};
@@ -12,12 +13,12 @@ class DeleteButton extends Component {
   };
 
   render() {
-    return <button disabled={this.state.loading} onClick={this.onClick}>Delete</button>
+    return <button className= 'button' disabled={this.state.loading} onClick={this.onClick}>Delete</button>
   }
 }
 
-DeleteButton.defaultProps = {
+ButtonDelete.defaultProps = {
   loading: false
 };
 
-export default DeleteButton;
+export default ButtonDelete;
