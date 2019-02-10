@@ -36,7 +36,7 @@ class Adverts extends PureComponent {
 
   render() {
     if (this.props.loading) {
-      return <span>loading...</span>;
+      return <span className="adverts">loading...</span>;
     }
 
     return (

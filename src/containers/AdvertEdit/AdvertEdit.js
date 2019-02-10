@@ -48,7 +48,7 @@ class AdvertEdit extends PureComponent {
 
   render() {
     if (this.props.loading) {
-      return <span>loading...</span>;
+      return <span className="advert-edit">loading...</span>;
     }
 
     const { params } = this.props.match;
@@ -56,7 +56,6 @@ class AdvertEdit extends PureComponent {
       <div className="advert-edit">
         <AdvertForm advert={this.state} onSubmit={this.handleAdvertEdit} onCancelClick={this.goToAdvertsPage}
                     handleStateChange={(newState) => { this.setState(newState); }} />
-        <h1>AdvertEdit {params.id}</h1>
       </div>
     )
   }

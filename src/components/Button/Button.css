@@ -7,6 +7,7 @@
     text-transform: uppercase;
     padding: 0 .8rem;
     box-shadow: 0 .2rem .35rem .15rem rgba(255, 105, 135, .30);
+    margin: 0 0.2rem;
 }
 
 .button:hover {

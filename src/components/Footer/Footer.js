@@ -4,7 +4,7 @@ import './Footer.css';
 class Footer extends PureComponent {
   render() {
     return (
-        <footer className="footer container">
+        <footer className="footer">
           made by Olga
         </footer>
     )
