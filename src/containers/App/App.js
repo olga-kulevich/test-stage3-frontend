@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react';
 import {connect} from "react-redux";
 import {PATHS} from "../../constants";
-import {Menu} from "../../components";
+import {Menu, Footer} from "../../components";
 import { withRouter } from "react-router-dom";
 
 class App extends PureComponent {
@@ -24,7 +24,8 @@ class App extends PureComponent {
         <Menu onAdvertsItemClick={this.goToAdvertsPage}
               onAuthorsItemClick={this.goToAuthorsPage}
         />
-        <div>{this.props.children}</div>
+        {this.props.children}
+        <Footer/>
       </div>
     )
   }
