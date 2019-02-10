@@ -32,12 +32,13 @@ class AdvertForm extends PureComponent {
     const value = target.value;
     const name = target.name;
     this.setState({
-     [name]: value });
+      [name]: value
+    });
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    const {onSubmit} = this.props;
+    const { onSubmit } = this.props;
     const data = {
       category: this.state.category,
       price: this.state.price,
@@ -64,8 +65,11 @@ class AdvertForm extends PureComponent {
           <input type="number" name="price" value={this.state.price} onChange={this.handleInputChange}/>
         </label>
 
-        <Button value='Save' />
-        <Button value='Cancel' onClick={(event) => {event.preventDefault(); this.props.onCancelClick();}} />
+        <Button value='Save'/>
+        <Button value='Cancel' onClick={(event) => {
+          event.preventDefault();
+          this.props.onCancelClick();
+        }}/>
       </form>
     );
   }
