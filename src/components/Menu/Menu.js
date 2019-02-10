@@ -5,16 +5,16 @@ class Menu extends PureComponent {
   render() {
     const {onAdvertsItemClick, onAuthorsItemClick} = this.props;
     return (
-    <div>
-      <ul>
-        <li onClick={() => onAdvertsItemClick()}>
-          Adverts
-        </li>
-        <li onClick={() => onAuthorsItemClick()}>
-          Authors
-        </li>
-      </ul>
-    </div>
+      <nav className="header-menu menu">
+        <ul className="header-menu__list">
+          <li className="header-menu__item" onClick={() => onAdvertsItemClick()}>
+            Adverts
+          </li>
+          <li className="header-menu__item" onClick={() => onAuthorsItemClick()}>
+            Authors
+          </li>
+        </ul>
+      </nav>
     )
   }
 }
