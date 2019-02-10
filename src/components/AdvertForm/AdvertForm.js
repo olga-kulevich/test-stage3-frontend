@@ -65,6 +65,7 @@ class AdvertForm extends PureComponent {
         </label>
 
         <Button value='Save' />
+        <Button value='Cancel' onClick={(event) => {event.preventDefault(); this.props.onCancelClick();}} />
       </form>
     );
   }
@@ -79,8 +80,9 @@ AdvertForm.defaultProps = {
 };
 
 AdvertForm.propTypes = {
-  advert: PropTypes.array.isRequired,
-  onSubmit: PropTypes.func
+  advert: PropTypes.object.isRequired,
+  onSubmit: PropTypes.func,
+  onCancelClick: PropTypes.func.isRequired
 };
 
 export default AdvertForm;

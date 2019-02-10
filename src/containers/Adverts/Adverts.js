@@ -39,7 +39,7 @@ class Adverts extends PureComponent {
     return (
       <div className="Adverts">
         <AdvertsTable adverts={this.props.adverts} onDeleteClick={this.handleAdvertDelete}
-                      onEditClick={this.goToAdvertEditPage}
+                      onClick={this.goToAdvertEditPage}
                       onTitleClick={this.goToAdvertPage}
         />
         <Button value='Add Advert' onClick={this.goToAdvertAddPage} />

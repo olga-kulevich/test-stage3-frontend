@@ -4,7 +4,7 @@ import {ButtonDelete, Button} from "../../components";
 
 class AdvertsTable extends PureComponent {
   renderRows(adverts) {
-    const {onDeleteClick, onEditClick, onTitleClick} = this.props;
+    const {onDeleteClick, onClick, onTitleClick} = this.props;
     return adverts.map(advert => (
       <tr key={advert.id} data-id={advert.id}>
         <td onClick={() => onTitleClick(advert.id)}>
@@ -16,7 +16,7 @@ class AdvertsTable extends PureComponent {
           <ButtonDelete onDeleteClick={onDeleteClick} id={advert.id} />
         </td>
         <td>
-          <Button value='Edit' onClick={() => onEditClick(advert.id)} id={advert.id} />
+          <Button value='Edit' onClick={() => onClick(advert.id)} id={advert.id} />
         </td>
       </tr>
     ));
@@ -43,7 +43,7 @@ class AdvertsTable extends PureComponent {
 AdvertsTable.propTypes = {
   adverts: PropTypes.array.isRequired,
   onDeleteClick: PropTypes.func.isRequired,
-  onEditClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
   onTitleClick: PropTypes.func.isRequired
 };
 

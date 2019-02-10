@@ -9,6 +9,7 @@ class AdvertAdd extends PureComponent {
   constructor(props) {
     super(props);
     this.handleAdvertAdd = this.handleAdvertAdd.bind(this);
+    this.goToAdvertsPage = this.goToAdvertsPage.bind(this);
   }
 
   handleAdvertAdd(data) {
@@ -17,10 +18,14 @@ class AdvertAdd extends PureComponent {
     this.props.history.push(`/adverts`);
   }
 
+  goToAdvertsPage() {
+    this.props.history.push(`/adverts`);
+  }
+
   render() {
     return (
-      <div>
-        <AdvertForm adverts={this.props.adverts} onSubmit={this.handleAdvertAdd}/>
+      <div className="adverts-add">
+        <AdvertForm adverts={this.props.adverts} onSubmit={this.handleAdvertAdd} onCancelClick={this.goToAdvertsPage}/>
       </div>
     )
   }

@@ -10,6 +10,7 @@ class AdvertEdit extends PureComponent {
   constructor(props) {
     super(props);
     this.handleAdvertEdit = this.handleAdvertEdit.bind(this);
+    this.goToAdvertsPage = this.goToAdvertsPage.bind(this);
   }
 
   componentDidMount() {
@@ -22,11 +23,15 @@ class AdvertEdit extends PureComponent {
     this.props.history.push(`/adverts`);
   }
 
+  goToAdvertsPage() {
+    this.props.history.push(`/adverts/`);
+  }
+
   render() {
     const { params } = this.props.match;
     return (
-      <div>
-        <AdvertForm advert={this.props.advert} onSubmit={this.handleAdvertEdit}/>
+      <div className="advert-edit">
+        <AdvertForm advert={this.props.advert} onSubmit={this.handleAdvertEdit} onCancelClick={this.goToAdvertsPage}/>
         <h1>AdvertEdit {params.id}</h1>
       </div>
     )
