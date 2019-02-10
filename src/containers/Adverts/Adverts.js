@@ -35,6 +35,9 @@ class Adverts extends PureComponent {
   }
 
   render() {
+    if (this.props.loading) {
+      return <span>loading...</span>;
+    }
 
     return (
       <div className="adverts">
@@ -50,7 +53,8 @@ class Adverts extends PureComponent {
 
 const mapStateToProps = (state) => {
   return {
-    adverts: state.Adverts.adverts.data
+    adverts: state.Adverts.adverts.data,
+    loading: state.Adverts.adverts.loading
   }
 };
 

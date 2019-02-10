@@ -47,6 +47,10 @@ class AdvertEdit extends PureComponent {
   }
 
   render() {
+    if (this.props.loading) {
+      return <span>loading...</span>;
+    }
+
     const { params } = this.props.match;
     return (
       <div className="advert-edit">
@@ -60,7 +64,8 @@ class AdvertEdit extends PureComponent {
 
 const mapStateToProps = (state) => {
   return {
-    advert: state.Adverts.advert.data
+    advert: state.Adverts.advert.data,
+    loading: state.Adverts.advert.loading
   }
 };
 
