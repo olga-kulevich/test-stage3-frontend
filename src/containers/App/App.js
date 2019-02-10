@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import {PATHS} from "../../constants";
 import {Menu, Footer} from "../../components";
 import { withRouter } from "react-router-dom";
+import './App.css';
 
 class App extends PureComponent {
   constructor(props) {
@@ -20,7 +21,7 @@ class App extends PureComponent {
 
   render() {
     return (
-      <div>
+      <div className="app">
         <Menu onAdvertsItemClick={this.goToAdvertsPage}
               onAuthorsItemClick={this.goToAuthorsPage}
         />

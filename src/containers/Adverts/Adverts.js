@@ -37,7 +37,7 @@ class Adverts extends PureComponent {
   render() {
 
     return (
-      <div className="Adverts">
+      <div className="adverts">
         <AdvertsTable adverts={this.props.adverts} onDeleteClick={this.handleAdvertDelete}
                       onClick={this.goToAdvertEditPage}
                       onTitleClick={this.goToAdvertPage}

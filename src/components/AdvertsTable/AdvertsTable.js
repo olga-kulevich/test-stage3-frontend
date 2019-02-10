@@ -1,6 +1,7 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {ButtonDelete, Button} from "../../components";
+import './AdvertsTable.css';
 
 class AdvertsTable extends PureComponent {
   renderRows(adverts) {
@@ -24,14 +25,12 @@ class AdvertsTable extends PureComponent {
 
   render() {
     return (
-      <table>
+      <table className='table'>
         <thead>
         <tr>
           <th>Title</th>
           <th>Category</th>
           <th>Price</th>
-          <th>Delete</th>
-          <th>Edit</th>
         </tr>
         </thead>
         <tbody>{this.renderRows(this.props.adverts)}</tbody>
