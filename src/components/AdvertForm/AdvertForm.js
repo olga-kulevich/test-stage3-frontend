@@ -4,7 +4,11 @@ import PropTypes from 'prop-types';
 class AdvertForm extends PureComponent {
   constructor(props) {
     super(props);
-    this.state = { title: this.props.advert.title, category: this.props.advert.category, price: this.props.advert.price };
+    this.state = {
+      title: this.props.advert.title,
+      category: this.props.advert.category,
+      price: this.props.advert.price
+    };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
