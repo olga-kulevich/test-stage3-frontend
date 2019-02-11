@@ -113,11 +113,13 @@ class AdvertForm extends PureComponent {
         <div className="center" style={{color: "red"}}>{this.state.errors["price"]}</div>
 
         <div className="center">
-          <Button value='Save'/>
-          <Button value='Cancel' onClick={(event) => {
+          <Button>Save</Button>
+          <Button onClick={(event) => {
             event.preventDefault();
             this.props.onCancelClick();
-          }}/>
+          }}>
+            Cancel
+          </Button>
         </div>
       </form>
     );

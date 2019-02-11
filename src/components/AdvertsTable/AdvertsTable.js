@@ -17,7 +17,9 @@ class AdvertsTable extends PureComponent {
           <ButtonDelete onDeleteClick={onDeleteClick} id={advert.id} />
         </td>
         <td>
-          <Button value='Edit' onClick={() => onClick(advert.id)} id={advert.id} />
+          <Button onClick={() => onClick(advert.id)} id={advert.id}>
+            Edit
+          </Button>
         </td>
       </tr>
     ));

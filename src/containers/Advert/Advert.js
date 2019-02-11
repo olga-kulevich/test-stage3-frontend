@@ -39,7 +39,9 @@ class Advert extends PureComponent {
         <h3>Price:</h3>
         <p>{price}</p>
 
-        <Button value='Cancel' onClick={this.goToAdvertsPage} />
+        <Button onClick={this.goToAdvertsPage}>
+          Cancel
+        </Button>
       </div>
     )
   }
