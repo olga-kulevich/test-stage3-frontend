@@ -12,6 +12,7 @@ class Advert extends PureComponent {
     this.state = {
       title: '',
       category: '',
+      description: '',
       price: ''
     };
     this.goToAdvertsPage = this.goToAdvertsPage.bind(this);
@@ -26,15 +27,18 @@ class Advert extends PureComponent {
   }
 
   render() {
-    const {title, category, price} = this.props.advert;
+    const {title, category, description, price} = this.props.advert;
     return (
       <div className="advert">
         <h3>Title:</h3>
         <p>{title}</p>
         <h3>Category:</h3>
         <p>{category}</p>
+        <h3>Description:</h3>
+        <p>{description}</p>
         <h3>Price:</h3>
         <p>{price}</p>
+
         <Button value='Cancel' onClick={this.goToAdvertsPage} />
       </div>
     )

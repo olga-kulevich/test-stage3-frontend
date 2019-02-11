@@ -46,6 +46,7 @@ class Adverts extends PureComponent {
                       onTitleClick={this.goToAdvertPage}
         />
         <Button value='Add Advert' onClick={this.goToAdvertAddPage} />
+        <Button onClick={this.goToAdvertAddPage}>Add Advert</Button>
       </div>
     );
   }

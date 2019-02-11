@@ -14,6 +14,7 @@ class AdvertAdd extends PureComponent {
     this.state = {
       title: "",
       category: "",
+      description: "",
       price: ""
     };
   }

@@ -13,15 +13,15 @@ export function performDeleteAdvert(id) {
 
 export function performAddAdvert(data) {
     return dispatcher.dispatchPromise(addAdvert, 'ADD_ADVERT',
-      state => state.Adverts.deletedAdvert.loading, [data]);
+      state => state.Adverts.advert.loading, [data]);
 }
 
 export function performGetAdvert(id) {
     return dispatcher.dispatchPromise(getAdvert, 'GET_ADVERT',
-      state => state.Adverts.deletedAdvert.loading, [id] );
+      state => state.Adverts.advert.loading, [id] );
 }
 
 export function performEditAdvert(id, data) {
     return dispatcher.dispatchPromise(editAdvert, 'EDIT_ADVERT',
-      state => state.Adverts.deletedAdvert.loading, [id, data]);
+      state => state.Adverts.advert.loading, [id, data]);
 }

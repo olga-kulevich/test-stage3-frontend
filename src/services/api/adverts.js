@@ -8,6 +8,7 @@ export function getAdverts() {
          category: advert.category,
          price: advert.price,
          title: advert.title,
+         description: advert.description
        }
      });
      return { data };
@@ -25,6 +26,7 @@ export function addAdvert(data) {
       category: response.data.advert.category,
       price: response.data.advert.price,
       title: response.data.advert.title,
+      description: response.data.advert.description
     }};
   });
 }
@@ -36,6 +38,7 @@ export function getAdvert(id) {
       category: response.data.category,
       price: response.data.price,
       title: response.data.title,
+      description: response.data.description
     }};
   });
 }
@@ -47,6 +50,7 @@ export function editAdvert(id, data) {
         category: response.data.advert.category,
         price: response.data.advert.price,
         title: response.data.advert.title,
+        description: response.data.advert.description
       }};
   });
 }

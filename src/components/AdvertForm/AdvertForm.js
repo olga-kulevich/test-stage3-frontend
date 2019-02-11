@@ -11,7 +11,8 @@ class AdvertForm extends PureComponent {
       fields: {
         title: this.props.advert.title,
         category: this.props.advert.category,
-        price: this.props.advert.price
+        price: this.props.advert.price,
+        description: this.props.advert.description,
       },
       errors: {}
     }
@@ -39,7 +40,15 @@ class AdvertForm extends PureComponent {
     if(typeof fields["category"] !== "undefined"){
       if(!fields["category"].match(/^[a-zA-Z0-9_. -,]*$/)){
         formIsValid = false;
-        errors["category"] = "Only letters, numbers, '-', '.'";
+        errors["category"] = "Only letters, numbers, '-', '.', ','";
+      }
+    }
+
+    //Description
+    if(typeof fields["description"] !== "undefined"){
+      if(!fields["description"].match(/^[a-zA-Z0-9_. -,]*$/)){
+        formIsValid = false;
+        errors["description"] = "Only letters, numbers, '-', '.', ','";
       }
     }
 
@@ -92,6 +101,12 @@ class AdvertForm extends PureComponent {
         <div className="center" style={{color: "red"}}>{this.state.errors["category"]}</div>
 
         <div className="center">
+          <label>Description</label>
+          <textarea rows="10" cols="59" name="description" className="inputs" value={this.props.advert.description} onChange={this.handleInputChange}/>
+        </div>
+        <div className="center" style={{color: "red"}}>{this.state.errors["description"]}</div>
+
+        <div className="center">
           <label>Price</label>
           <input type="number" name="price" size="60" className="inputs" value={this.props.advert.price} onChange={this.handleInputChange}/>
         </div>
@@ -113,6 +128,7 @@ AdvertForm.defaultProps = {
   advert: {
     title: '',
     category: '',
+    description: '',
     price: ''
   }
 };
