@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 class Main extends Component {
   render() {
     return (
-      <div>Main page</div>
+      <div className="main">Main page</div>
     );
   }
 }

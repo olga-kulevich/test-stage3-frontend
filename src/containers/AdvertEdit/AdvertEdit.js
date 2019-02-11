@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react';
 import './AdvertEdit.css';
 import Adverts from "../Adverts";
 import PropTypes from "prop-types";
-import {AdvertForm} from "../../components";
+import {AdvertForm, Loader} from "../../components";
 import {connect} from "react-redux";
 import {performGetAdvert, performEditAdvert} from "../../action_performers/adverts";
 
@@ -48,10 +48,9 @@ class AdvertEdit extends PureComponent {
 
   render() {
     if (this.props.loading) {
-      return <span className="advert-edit">loading...</span>;
+      return <Loader />;
     }
 
-    const { params } = this.props.match;
     return (
       <div className="advert-edit">
         <AdvertForm advert={this.state} onSubmit={this.handleAdvertEdit} onCancelClick={this.goToAdvertsPage}

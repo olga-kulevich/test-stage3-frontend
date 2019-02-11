@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import './Adverts.css';
-import {AdvertsTable, Button} from "../../components";
+import {AdvertsTable, Button, Loader} from "../../components";
 import { performGetAdverts, performDeleteAdvert } from '../../action_performers/adverts';
 
 class Adverts extends PureComponent {
@@ -36,7 +36,7 @@ class Adverts extends PureComponent {
 
   render() {
     if (this.props.loading) {
-      return <span className="adverts">loading...</span>;
+      return <Loader>g</Loader>;
     }
 
     return (
