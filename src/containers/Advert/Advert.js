@@ -5,6 +5,7 @@ import Adverts from "../Adverts";
 import {performGetAdvert} from "../../action_performers/adverts";
 import {connect} from "react-redux";
 import {Button} from "../../components";
+import {Link} from "react-router-dom";
 
 class Advert extends PureComponent {
   constructor(props) {
@@ -15,15 +16,10 @@ class Advert extends PureComponent {
       description: '',
       price: ''
     };
-    this.goToAdvertsPage = this.goToAdvertsPage.bind(this);
   }
 
   componentDidMount() {
     performGetAdvert(this.props.match.params.id);
-  }
-
-  goToAdvertsPage() {
-    this.props.history.push(`/adverts/`);
   }
 
   render() {
@@ -39,9 +35,11 @@ class Advert extends PureComponent {
         <h3>Price:</h3>
         <p>{price}</p>
 
-        <Button onClick={this.goToAdvertsPage}>
-          Cancel
-        </Button>
+        <Link to="/adverts/">
+          <Button>
+            Cancel
+          </Button>
+        </Link>
       </div>
     )
   }

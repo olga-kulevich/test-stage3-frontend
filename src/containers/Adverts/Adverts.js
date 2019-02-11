@@ -4,11 +4,11 @@ import {connect} from 'react-redux';
 import './Adverts.css';
 import {AdvertsTable, Button, Loader} from "../../components";
 import { performGetAdverts, performDeleteAdvert } from '../../action_performers/adverts';
+import {Link} from "react-router-dom";
 
 class Adverts extends PureComponent {
   constructor(props) {
     super(props);
-    this.goToAdvertAddPage = this.goToAdvertAddPage.bind(this);
     this.handleAdvertDelete = this.handleAdvertDelete.bind(this);
     this.goToAdvertEditPage = this.goToAdvertEditPage.bind(this);
     this.goToAdvertPage = this.goToAdvertPage.bind(this);
@@ -16,10 +16,6 @@ class Adverts extends PureComponent {
 
   componentDidMount() {
     performGetAdverts();
-  }
-
-  goToAdvertAddPage() {
-    this.props.history.push("/adverts/new");
   }
 
   handleAdvertDelete(id) {
@@ -45,9 +41,11 @@ class Adverts extends PureComponent {
                       onClick={this.goToAdvertEditPage}
                       onTitleClick={this.goToAdvertPage}
         />
-        <Button onClick={this.goToAdvertAddPage}>
-          Add Advert
-        </Button>
+        <Link to="/adverts/new">
+          <Button>
+            Add Advert
+          </Button>
+        </Link>
       </div>
     );
   }
