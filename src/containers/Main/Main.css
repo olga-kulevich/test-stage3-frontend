@@ -1,3 +1,7 @@
 .main {
   flex: 1 0 auto;
+  padding-bottom: auto;
+  padding-top: auto;
+  text-align: center;
+  font-size: 2rem;
 }

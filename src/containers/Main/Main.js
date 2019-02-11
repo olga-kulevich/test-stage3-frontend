@@ -4,7 +4,7 @@ import './Main.css';
 class Main extends Component {
   render() {
     return (
-      <div className="main">Main page</div>
+      <div className="main">Welcome to the site with advertisments!</div>
     );
   }
 }

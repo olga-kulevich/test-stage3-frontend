@@ -29,7 +29,7 @@ class AdvertForm extends PureComponent {
     }
 
     if(typeof fields["title"] !== "undefined"){
-      if(!fields["title"].match(/^[a-zA-Z0-9_.-]*$/)){
+      if(!fields["title"].match(/^[a-zA-Z0-9_. -,]*$/)){
         formIsValid = false;
         errors["title"] = "Only letters, numbers, '-', '.'";
       }
@@ -37,7 +37,7 @@ class AdvertForm extends PureComponent {
 
     //Category
     if(typeof fields["category"] !== "undefined"){
-      if(!fields["category"].match(/^[a-zA-Z0-9_.-]*$/)){
+      if(!fields["category"].match(/^[a-zA-Z0-9_. -,]*$/)){
         formIsValid = false;
         errors["category"] = "Only letters, numbers, '-', '.'";
       }
@@ -45,7 +45,7 @@ class AdvertForm extends PureComponent {
 
     //Price
     if(typeof fields["price"] !== "undefined"){
-      if(!fields["price"].match(/^[1-9]\d*$/)){
+      if(!fields["price"].match(/^[0-9]\d*$/)){
         formIsValid = false;
         errors["price"] = "Only positive numeric value";
       }
