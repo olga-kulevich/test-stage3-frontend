@@ -1,0 +1,28 @@
+.menu {
+    display: flex;
+    width: 100%;
+}
+
+.header-menu {
+    margin-bottom: 2rem;
+}
+
+.header-menu__list {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    flex-flow: row nowrap;
+    align-items: center;
+    width: 100%;
+}
+
+.header-menu__item {
+    font-size: 1.3em;
+    margin:0 1.2rem;
+}
+
+.header-menu__item:hover,
+.header-menu__item:focus,
+.header-menu__item__active {
+    border-bottom: 2px solid #FE6B8B;;
+}

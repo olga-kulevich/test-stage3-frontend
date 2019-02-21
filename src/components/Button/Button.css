@@ -1,0 +1,15 @@
+.button {
+    background: linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%);
+    border-radius: .2rem;
+    border: 0;
+    color: white;
+    height: 1.5rem;
+    text-transform: uppercase;
+    padding: 0 .8rem;
+    box-shadow: 0 .2rem .35rem .15rem rgba(255, 105, 135, .30);
+    margin: 0 0.2rem;
+}
+
+.button:hover {
+    color: black;
+}
