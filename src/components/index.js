@@ -5,3 +5,4 @@ export { default as ButtonDelete } from './ButtonDelete';
 export { default as Button } from './Button';
 export { default as Footer } from './Footer';
 export { default as Loader } from './Loader';
+export { default as Sorting } from './Sorting';

@@ -27,16 +27,18 @@ class AdvertsTable extends PureComponent {
 
   render() {
     return (
-      <table className='table'>
-        <thead>
-        <tr>
-          <th>Title</th>
-          <th>Category</th>
-          <th>Price</th>
-        </tr>
-        </thead>
-        <tbody>{this.renderRows(this.props.adverts)}</tbody>
-      </table>
+      <div>
+        <table className='table'>
+          <thead>
+          <tr>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Price</th>
+          </tr>
+          </thead>
+          <tbody>{this.renderRows(this.props.adverts)}</tbody>
+        </table>
+      </div>
     );
   }
 }

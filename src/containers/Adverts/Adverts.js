@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import './Adverts.css';
-import {AdvertsTable, Button, Loader} from "../../components";
+import {AdvertsTable, Button, Loader, Sorting} from "../../components";
 import { performGetAdverts, performDeleteAdvert } from '../../action_performers/adverts';
 import {Link} from "react-router-dom";
 
@@ -37,6 +37,7 @@ class Adverts extends PureComponent {
 
     return (
       <div className="adverts">
+        <Sorting />
         <AdvertsTable adverts={this.props.adverts} onDeleteClick={this.handleAdvertDelete}
                       onClick={this.goToAdvertEditPage}
                       onTitleClick={this.goToAdvertPage}

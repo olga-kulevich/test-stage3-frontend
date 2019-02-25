@@ -14,7 +14,8 @@ class AdvertForm extends PureComponent {
         price: this.props.advert.price,
         description: this.props.advert.description,
       },
-      errors: {}
+      errors: {},
+
     }
   }
 
