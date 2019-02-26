@@ -25,3 +25,7 @@ export function performEditAdvert(id, data) {
     return dispatcher.dispatchPromise(editAdvert, 'EDIT_ADVERT',
       state => state.Adverts.advert.loading, [id, data]);
 }
+
+export function performSortAdverts(field, direction) {
+    return dispatcher.dispatchAction('CHANGE_ORDER_ADVERTS', [field, direction]);
+}

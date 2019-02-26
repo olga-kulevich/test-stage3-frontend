@@ -54,6 +54,7 @@ class Adverts extends PureComponent {
 
 const mapStateToProps = (state) => {
   return {
+    filter: state.Adverts.filter,
     adverts: state.Adverts.adverts.data,
     loading: state.Adverts.adverts.loading
   }
