@@ -16,7 +16,7 @@ const initialState = {
   },
   filter: {
     field: 'price',
-    direction: 'asc'
+    direction: 'desc'
   }
 };
 
@@ -24,13 +24,15 @@ export function advertsReducer(state = initialState, action) {
   switch (action.type) {
     case 'GET_ADVERTS': {
       const payload = action && action.payload;
-      const field = this.state.filter.field;
-      const direction = this.state.filter.direction;
+      console.log( state.filter.field);
+      console.log( state.filter.direction);
+      const field = state.filter.field;
+      const direction = state.filter.direction;
       return {
         ...state,
         adverts: {
           data: payload ? payload.sort(function (a,b) {
-            return direction === 'asc' ? a.field - b.field : b.field - a.field;
+            return direction === 'asc' ? (a[field] - b[field]) : (b[field] - a[field]);
           }) : state.adverts.data,
           loading: action.loading,
           error: action.error
@@ -97,11 +99,12 @@ export function advertsReducer(state = initialState, action) {
         }
       };
     case 'CHANGE_ORDER_ADVERTS':
+      console.log(action.payload);
       return {
         ...state,
         filter: {
-          field: action.payload ? action.meta[0] : state.filter.field,
-          direction: action.payload ? action.meta[1] : state.filter.direction
+          field: action.payload ? action.payload[0] : state.filter.field,
+          direction: action.payload ? action.payload[1] : state.filter.direction
         }
       };
     default:

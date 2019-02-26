@@ -1,5 +1,5 @@
 import React, {PureComponent} from 'react';
-import {performSortAdverts} from "../../action_performers/adverts";
+import {performGetAdverts, performSortAdverts} from "../../action_performers/adverts";
 
 class Sorting extends PureComponent {
   constructor(props) {
@@ -30,24 +30,24 @@ class Sorting extends PureComponent {
         direction = 'desc';
         break;
       case 'priceAsc':
-        field = 'category';
+        field = 'price';
         direction = 'asc';
         break;
       case 'priceDesc':
-        field = 'category';
+        field = 'price';
         direction = 'desc';
         break;
       default:
-        field = '';
-        direction = '';
+        field = 'price';
+        direction = 'asc';
     }
     performSortAdverts(field, direction);
+    performGetAdverts();
   }
 
   render() {
     return (
       <select onChange={this.handleSorting}>
-        <option value=""> </option>
         <option value="titleAsc">Title ascending</option>
         <option value="titleDesc">Title descending</option>
         <option value="categoryAsc">Category ascending</option>
