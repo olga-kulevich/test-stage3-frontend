@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import './Adverts.css';
-import {AdvertsTable, Button, Loader, Sorting} from "../../components";
+import {AdvertsTable, Button, Loader, Sorting, CategoryList} from "../../components";
 import { performGetAdverts, performDeleteAdvert } from '../../action_performers/adverts';
 import {Link} from "react-router-dom";
 
@@ -13,10 +13,16 @@ class Adverts extends PureComponent {
     this.goToAdvertEditPage = this.goToAdvertEditPage.bind(this);
     this.goToAdvertPage = this.goToAdvertPage.bind(this);
     this.handleAdvertSort = this.handleAdvertSort.bind(this);
+    this.handleFilterByCategory = this.handleFilterByCategory.bind(this);
     this.state = {
+      category: '',
       field: 'title',
       direction: 'asc'
     }
+  }
+
+  handleFilterByCategory(category) {
+    this.setState({category} );
   }
 
   handleAdvertSort(field, direction) {
@@ -47,7 +53,7 @@ class Adverts extends PureComponent {
     const {field} = this.state;
     const {direction} = this.state;
 
-    const sortAdverts = (field === 'price') ?
+    let sortAdverts = (field === 'price') ?
       this.props.adverts.slice().sort(function (a, b) {
         return direction === 'asc' ? (a[field] - b[field]) : (b[field] - a[field])
       }) :
@@ -56,9 +62,17 @@ class Adverts extends PureComponent {
         b[field].localeCompare(a[field])
       });
 
+    const {category} = this.state;
+      if (category !== '') {
+        sortAdverts = sortAdverts.filter(function(advert) {
+          return advert.category === category;
+        });
+      }
+
     return (
       <div className="adverts">
         <Sorting onSelectChange={this.handleAdvertSort}/>
+        <CategoryList onSelectChange={this.handleFilterByCategory}/>
         <AdvertsTable adverts={sortAdverts} onDeleteClick={this.handleAdvertDelete}
                       onClick={this.goToAdvertEditPage}
                       onTitleClick={this.goToAdvertPage}
