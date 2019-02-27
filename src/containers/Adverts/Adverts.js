@@ -12,6 +12,15 @@ class Adverts extends PureComponent {
     this.handleAdvertDelete = this.handleAdvertDelete.bind(this);
     this.goToAdvertEditPage = this.goToAdvertEditPage.bind(this);
     this.goToAdvertPage = this.goToAdvertPage.bind(this);
+    this.handleAdvertSort = this.handleAdvertSort.bind(this);
+    this.state = {
+      field: 'title',
+      direction: 'asc'
+    }
+  }
+
+  handleAdvertSort(field, direction) {
+    this.setState({field, direction} );
   }
 
   componentDidMount() {
@@ -35,10 +44,22 @@ class Adverts extends PureComponent {
       return <Loader>g</Loader>;
     }
 
+    const {field} = this.state;
+    const {direction} = this.state;
+
+    const sortAdverts = (field === 'price') ?
+      this.props.adverts.slice().sort(function (a, b) {
+        return direction === 'asc' ? (a[field] - b[field]) : (b[field] - a[field])
+      }) :
+      this.props.adverts.slice().sort(function (a, b) {
+        return direction === 'asc' ? a[field].localeCompare(b[field]) :
+        b[field].localeCompare(a[field])
+      });
+
     return (
       <div className="adverts">
-        <Sorting />
-        <AdvertsTable adverts={this.props.adverts} onDeleteClick={this.handleAdvertDelete}
+        <Sorting onSelectChange={this.handleAdvertSort}/>
+        <AdvertsTable adverts={sortAdverts} onDeleteClick={this.handleAdvertDelete}
                       onClick={this.goToAdvertEditPage}
                       onTitleClick={this.goToAdvertPage}
         />

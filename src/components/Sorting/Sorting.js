@@ -1,59 +1,92 @@
 import React, {PureComponent} from 'react';
-import {performGetAdverts, performSortAdverts} from "../../action_performers/adverts";
 
 class Sorting extends PureComponent {
   constructor(props) {
     super(props);
     this.handleSorting = this.handleSorting.bind(this);
+    this.state = {
+      select: '',
+      selectFields: [
+        {
+          id: 1,
+          name: 'Title ascending',
+        },
+        {
+          id: 2,
+          name: 'Title descending',
+        },
+        {
+          id: 3,
+          name: 'Category ascending',
+        },
+        {
+          id: 4,
+          name: 'Category descending',
+        },
+        {
+          id: 5,
+          name: 'Price ascending',
+        },
+        {
+          id: 6,
+          name: 'Price descending'
+        }
+      ]
+    }
   }
 
   handleSorting(event) {
-    const target = event.target;
-    const value = target.value;
+    const { value } = event.target;
+    this.setState({
+      select: value,
+    });
+
     let direction = '';
     let field = '';
     switch (value) {
-      case 'titleAsc':
+      case '1':
         field = 'title';
         direction = 'asc';
         break;
-      case 'titleDesc':
+      case '2':
         field = 'title';
         direction = 'desc';
         break;
-      case 'categoryAsc':
+      case '3':
         field = 'category';
         direction = 'asc';
         break;
-      case 'categoryDesc':
+      case '4':
         field = 'category';
         direction = 'desc';
         break;
-      case 'priceAsc':
+      case '5':
         field = 'price';
         direction = 'asc';
         break;
-      case 'priceDesc':
+      case '6':
         field = 'price';
         direction = 'desc';
         break;
       default:
-        field = 'price';
+        field = 'title';
         direction = 'asc';
     }
-    performSortAdverts(field, direction);
-    performGetAdverts();
+    const {onSelectChange} = this.props;
+    if (typeof (onSelectChange) === 'function') {
+      onSelectChange(field, direction);
+    }
   }
 
   render() {
+    const { select, selectFields } = this.state;
+    const options = selectFields.map((item) => {
+      return <option key={item.id} value={item.id}>{item.name}</option>;
+    });
+
     return (
-      <select onChange={this.handleSorting}>
-        <option value="titleAsc">Title ascending</option>
-        <option value="titleDesc">Title descending</option>
-        <option value="categoryAsc">Category ascending</option>
-        <option value="categoryDesc">Category descending</option>
-        <option value="priceAsc">Price ascending</option>
-        <option value="priceDesc">Price descending</option>
+      <select onChange={this.handleSorting} name="sort" value={select}>
+        {options}
       </select>
     )
   }
