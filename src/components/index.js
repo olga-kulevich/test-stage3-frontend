@@ -7,3 +7,4 @@ export { default as Footer } from './Footer';
 export { default as Loader } from './Loader';
 export { default as Sorting } from './Sorting';
 export { default as CategoryList } from './CategoryList';
+export { default as SearchBar } from './SearchBar';

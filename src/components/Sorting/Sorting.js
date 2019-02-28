@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react';
+import PropTypes from "prop-types";
 
 class Sorting extends PureComponent {
   constructor(props) {
@@ -91,5 +92,9 @@ class Sorting extends PureComponent {
     )
   }
 }
+
+Sorting.propTypes = {
+  onSelectChange: PropTypes.func.isRequired,
+};
 
 export default Sorting;

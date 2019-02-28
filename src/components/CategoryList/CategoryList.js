@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react';
+import PropTypes from "prop-types";
 
 class CategoryList extends PureComponent {
   constructor(props) {
@@ -112,5 +113,9 @@ class CategoryList extends PureComponent {
     )
   }
 }
+
+CategoryList.propTypes = {
+  onSelectChange: PropTypes.func.isRequired,
+};
 
 export default CategoryList;
